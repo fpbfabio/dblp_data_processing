@@ -1,8 +1,4 @@
-#!/usr/bin/env python3
-
-
 from const import *
-from newsgroups import Newsgroups
 
 class Document:
 
