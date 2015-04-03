@@ -4,7 +4,7 @@ A program that transforms the dblp xml file available on the web into an xml fil
 
 ##Requirements
 
-* python3 command line tool set up
+* python (version 3 or higher) command line tool set up
 
 ##How to use
 
