@@ -1,4 +1,3 @@
 *~
 __pycache__/
-python_test/
-bash/execute_all_tests.sh
+.idea/
