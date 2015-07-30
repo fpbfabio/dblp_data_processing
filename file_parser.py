@@ -11,7 +11,7 @@ class FileParser(AbsFileParser):
     TITLE_TAG_START = "<title>"
     TITLE_TAG_END = "</title>"
     MIN_NUMBER_WORDS = 4
-    FILE_PATH = ""
+    FILE_PATH = "/home/fabio/SolrCores/dblp.xml"
 
     def __init__(self):
         self.__factory = FileParserFactory()
@@ -22,6 +22,7 @@ class FileParser(AbsFileParser):
 
     def parse(self) -> [AbsData]:
         data_list = []
+        count = 0
         with open(FileParser.FILE_PATH, FileParser.FILE_PERMISSION) as file:
             key = None
             for line in file:
@@ -37,6 +38,8 @@ class FileParser(AbsFileParser):
                         data = self.factory.create_data(key, title)
                         if self._check_data(data):
                             data_list.append(data)
+                            count += 1
+                            print("Parsed " + str(count))
                     key = None
         return data_list
 

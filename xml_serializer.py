@@ -6,9 +6,10 @@ from abs_xml_serializer import AbsXmlSerializer
 
 class XmlSerializer(AbsXmlSerializer):
     FILE_PERMISSION = "w"
-    FILE_PATH = ""
+    FILE_PATH = "/home/fabio/SolrCores/solr.xml"
 
     def serialize(self, data_list: [AbsData]) -> None:
+        count = 0
         with open(XmlSerializer.FILE_PATH, XmlSerializer.FILE_PERMISSION) as archive:
             archive.write("<?xml version=\"1.0\" encoding=\"utf-8\"?>" + os.linesep)
             archive.write("<add>" + os.linesep)
@@ -19,4 +20,6 @@ class XmlSerializer(AbsXmlSerializer):
                 content = data.content.replace("]]>", "]]]]><![CDATA[>")
                 archive.write("\t\t<field name=\"text\"><![CDATA[" + content + "]]></field>" + os.linesep)
                 archive.write("\t</doc>" + os.linesep)
+                count += 1
+                print("Serialized " + str(count))
             archive.write("</add>" + os.linesep)
